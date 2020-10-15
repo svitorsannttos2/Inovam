@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "781939996046",
+    "firebase_url": "https://inovam-3c706.firebaseio.com",
+    "project_id": "inovam-3c706",
+    "storage_bucket": "inovam-3c706.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781939996046:android:34da92fc511659ba4260df",
+        "android_client_info": {
+          "package_name": "store.inovam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781939996046-6t6oie7ap6roas2r4njsgu7o7rvu6dlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBSmkcHcNLG-aZngO-guLjxEe45ZbMW2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781939996046-6t6oie7ap6roas2r4njsgu7o7rvu6dlf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
