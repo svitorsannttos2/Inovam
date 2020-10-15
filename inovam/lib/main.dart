@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inovam/models/user_manager.dart';
 import 'package:inovam/screens/base/base_screen.dart';
+import 'package:inovam/screens/login/login_screen.dart';
 import 'package:inovam/screens/signup/signup_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => UserManager(),
+      lazy: false,
       child: MaterialApp(
         title: 'Inovam',
         debugShowCheckedModeBanner: false,
@@ -25,6 +27,10 @@ class MyApp extends StatelessWidget {
         initialRoute: '/base',
         onGenerateRoute: (settings){
           switch(settings.name){
+            case '/login': 
+              return MaterialPageRoute(
+                builder: (_) => LoginScreen()
+              );
             case '/signup': 
               return MaterialPageRoute(
                 builder: (_) => SignUpScreen()
