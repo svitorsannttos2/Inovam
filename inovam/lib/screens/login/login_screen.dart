@@ -26,9 +26,9 @@ class LoginScreen extends StatelessWidget {
             onPressed: (){
               Navigator.of(context).pushReplacementNamed('/signup');
             },
-            textColor: Colors.white,
+            textColor: Colors.black,
             child: const Text(
-              'CRIAR CONTA',
+              'Criar Conta',
               style: TextStyle(fontSize: 14),
             ),
           )

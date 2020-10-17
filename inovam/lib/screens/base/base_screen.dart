@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inovam/common/custom_drawer/custom_drawer.dart';
 import 'package:inovam/models/page_manager.dart';
 import 'package:inovam/screens/login/login_screen.dart';
+import 'package:inovam/screens/products/products_screen.dart';
 import 'package:provider/provider.dart';
 
 class BaseScreen extends StatelessWidget {
@@ -19,13 +20,14 @@ class BaseScreen extends StatelessWidget {
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
-              title: const Text('Home 1'),
+              title: const Text('Home'),
             ),
           ),
+          ProductsScreen(),
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
-              title: const Text('Home 2'),
+              title: const Text('Home 3'),
             ),
           ),
           Container(color: Colors.red,),

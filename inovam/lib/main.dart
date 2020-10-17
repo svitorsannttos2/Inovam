@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inovam/models/product_manager.dart';
 import 'package:inovam/models/user_manager.dart';
 import 'package:inovam/screens/base/base_screen.dart';
 import 'package:inovam/screens/login/login_screen.dart';
@@ -14,9 +15,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserManager(),
-      lazy: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserManager(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProductManager(),
+          lazy: false,
+        ),
+      ],
       child: MaterialApp(
         title: 'Inovam',
         debugShowCheckedModeBanner: false,
@@ -27,11 +36,11 @@ class MyApp extends StatelessWidget {
         initialRoute: '/base',
         onGenerateRoute: (settings){
           switch(settings.name){
-            case '/login': 
+            case '/login':
               return MaterialPageRoute(
                 builder: (_) => LoginScreen()
               );
-            case '/signup': 
+            case '/signup':
               return MaterialPageRoute(
                 builder: (_) => SignUpScreen()
               );
