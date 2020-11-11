@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:inovam/models/cart_manager.dart';
 import 'package:inovam/models/product_manager.dart';
 import 'package:inovam/models/user_manager.dart';
 import 'package:inovam/screens/base/base_screen.dart';
+import 'package:inovam/screens/cart/cart_screen.dart';
 import 'package:inovam/screens/login/login_screen.dart';
 import 'package:inovam/screens/product/product_screen.dart';
 import 'package:inovam/screens/signup/signup_screen.dart';
@@ -28,6 +30,12 @@ class MyApp extends StatelessWidget {
           create: (_) => ProductManager(),
           lazy: false,
         ),
+        ProxyProvider<UserManager,CartManager>(
+          create: (_) => CartManager(),
+          lazy: false,
+          update: (_,userManager,cartManager) =>
+          cartManager..updateUser(userManager),
+        ),
       ],
       child: MaterialApp(
         title: 'Inovam',
@@ -52,6 +60,10 @@ class MyApp extends StatelessWidget {
                   builder: (_) => ProductScreen(
                     settings.arguments as Product
                   )
+              );
+            case '/cart':
+              return MaterialPageRoute(
+                  builder: (_) => CartScreen()
               );
             case '/base':
             default:

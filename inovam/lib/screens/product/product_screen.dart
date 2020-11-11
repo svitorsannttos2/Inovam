@@ -1,5 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:inovam/models/cart_manager.dart';
 import 'package:inovam/models/product.dart';
 import 'package:inovam/models/user_manager.dart';
 import 'package:inovam/screens/product/components/size.widget.dart';
@@ -110,7 +111,8 @@ class ProductScreen extends StatelessWidget {
                           child: RaisedButton(
                             onPressed: product.selectedSize != null ? (){
                               if(userManager.isLoggedIn){
-                                // TODO: ADCIONAR AO CARRINHO
+                                context.read<CartManager>().addToCart(product);
+                                Navigator.of(context).pushNamed('/cart');
                               }else{
                                 Navigator.of(context).pushNamed('/login');
                               }
