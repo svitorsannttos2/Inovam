@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:inovam/models/item_size.dart';
 import 'package:inovam/models/product.dart';
 
-class CartProduct {
+class CartProduct extends ChangeNotifier{
 
   CartProduct.fromProduct(this.product){
     productId = product.id;
@@ -11,16 +12,22 @@ class CartProduct {
   }
 
   CartProduct.fromDocument(DocumentSnapshot document){
+    id = document.documentID;
     productId = document.data['pid'] as String;
     quantity = document.data['quantity'] as int;
     size = document.data['size'] as String;
 
     firestore.document('products/$productId').get().then(
-            (doc) =>  product = Product.fromDocument(doc)
+            (doc){
+              product = Product.fromDocument(doc);
+              notifyListeners();
+            }
     );
   }
 
   final Firestore firestore = Firestore.instance;
+
+  String id;
 
   String productId;
   int quantity;
@@ -38,6 +45,8 @@ class CartProduct {
     return itemSize?.price;
   }
 
+  num get totalPrice => unitPrice * quantity;
+
   Map<String,dynamic> toCartItemMap(){
     return{
       'pid': productId,
@@ -49,5 +58,23 @@ class CartProduct {
   bool stackable(Product product){
     return product.id == productId && product.selectedSize.name == size;
   }
+
+  void increment(){
+    quantity++;
+    notifyListeners();
+  }
+
+  void decrement(){
+    quantity--;
+    notifyListeners();
+  }
+
+  bool get hasStock{
+    final size = itemSize;
+    if(size == null) return false;
+    return size.stock >= quantity;
+  }
+
+
 
 }
