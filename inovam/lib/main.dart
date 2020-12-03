@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inovam/models/cart_manager.dart';
+import 'package:inovam/models/home_manager.dart';
 import 'package:inovam/models/product_manager.dart';
 import 'package:inovam/models/user_manager.dart';
 import 'package:inovam/screens/base/base_screen.dart';
@@ -28,6 +29,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ProductManager(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => HomeManager() ,
           lazy: false,
         ),
         ChangeNotifierProxyProvider<UserManager,CartManager>(
