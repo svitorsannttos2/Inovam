@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:inovam/models/admin_users_manager.dart';
 import 'package:inovam/models/cart_manager.dart';
 import 'package:inovam/models/home_manager.dart';
 import 'package:inovam/models/product_manager.dart';
 import 'package:inovam/models/user_manager.dart';
 import 'package:inovam/screens/base/base_screen.dart';
 import 'package:inovam/screens/cart/cart_screen.dart';
+import 'package:inovam/screens/edit_product/edit-product-screen.dart';
 import 'package:inovam/screens/login/login_screen.dart';
 import 'package:inovam/screens/product/product_screen.dart';
 import 'package:inovam/screens/signup/signup_screen.dart';
@@ -41,6 +43,12 @@ class MyApp extends StatelessWidget {
           update: (_,userManager,cartManager) =>
           cartManager..updateUser(userManager),
         ),
+        ChangeNotifierProxyProvider<UserManager, AdminUserManager>(
+         create: (_) => AdminUserManager(),
+         lazy: false,
+          update: (_, userManager, adminUserManager) =>
+              adminUserManager..updateUser(userManager)
+        )
       ],
       child: MaterialApp(
         title: 'Inovam',
@@ -69,6 +77,10 @@ class MyApp extends StatelessWidget {
             case '/cart':
               return MaterialPageRoute(
                   builder: (_) => CartScreen()
+              );
+            case '/edit_product':
+              return MaterialPageRoute(
+                  builder: (_) => EditProductScreen()
               );
             case '/base':
             default:

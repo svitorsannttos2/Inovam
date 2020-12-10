@@ -33,10 +33,9 @@ class HomeScreen extends StatelessWidget{
                 floating: true,
                 elevation: 0,
                 backgroundColor: Colors.transparent,
-                flexibleSpace: const FlexibleSpaceBar(
-                  title: Text('Loja do Daniel'),
-                  centerTitle: true,
-                ),
+                title: Image.asset('assets/logo.png'),
+                titleSpacing: 70,
+                centerTitle: true,
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(Icons.shopping_cart),

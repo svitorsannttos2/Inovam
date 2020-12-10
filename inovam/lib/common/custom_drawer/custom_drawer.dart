@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inovam/common/custom_drawer/custom_drawer_header.dart';
 import 'package:inovam/common/custom_drawer/drawer_tile.dart';
+import 'package:inovam/models/user_manager.dart';
+import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -39,6 +41,29 @@ class CustomDrawer extends StatelessWidget {
               title: 'Meus Pedidos',
               page: 2,
               ),
+              Consumer<UserManager>(
+                builder: (_,userManage,__){
+                  if(userManage.adminEnabled){
+                    return Column(
+                      children: <Widget>[
+                        const Divider(),
+                        DrawerTile(
+                          iconData: Icons.settings,
+                          title: 'Usuários',
+                          page: 3,
+                        ),
+                        DrawerTile(
+                          iconData: Icons.settings,
+                          title: 'Pedidos',
+                          page: 4,
+                        ),
+                      ]
+                    );
+                  } else {
+                    return Container();
+                  }
+                }
+              )
             ],
           ),
         ],  
